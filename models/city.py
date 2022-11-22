@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """ City Module for HBNB project """
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from sqlalchemy import Column
 from sqlalchemy import String
 from sqlalchemy import ForeignKey
 
-class City(BaseModel):
+class City(BaseModel, Base):
     """ The city class, contains state ID and name """
     name = Column(String(128), nullable = True)
     __tablename__ = 'cities'
