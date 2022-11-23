@@ -3,14 +3,13 @@
 import cmd
 import sys
 from models.base_model import BaseModel
-from models.__init__ import storage
+from models import storage
 from models.user import User
 from models.place import Place
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
-from models.engine import file_storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -116,41 +115,33 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """ Create an object of any class"""
-        if not args:
+        new = args.split(" ")
+        if not new:
             print("** class name missing **")
             return
-        else:
-            args = args.split()
-            ob_cre = args[0]
-            if ob_cre not in HBNBCommand.classes:
-                print("** class doesn't exist **")
-                return
+        elif new[0] not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
+        new_instance = HBNBCommand.classes[new[0]]()
 
-        new_instance = HBNBCommand.classes[ob_cre]()
+        for i in range(1, len(new)):
+            first = new[i].split("=")
+            try:
+                if first[1][0] == "\"":
+                    first[1] = first[1].replace("\"", "")
+                    first[1] = first[1].replace("_", " ")
 
-        for i in range(1, len(args)):
-            param = args[i]
+                elif "." in first[1]:
+                    first[1] = float(first[1])
 
-            if '=' in param:
-                param = param.split('=')
+                else:
+                    first[1] = int(first[1])
+                setattr(new_instance, first[0], first[1])
+            except Exception:
+                continue
 
-                if len(param) > 1:
-                    key = param[0]
-                    value = param[1]
-
-                    if value[0] == '"':
-                        value = value[1:-1]
-                        value = value.replace('"', '\"').replace("_", " ")
-                    elif '.' in value:
-                        value = float(value)
-                    else:
-                        value = int(value)
-
-            setattr(new_instance, key, value)
-
-        storage.save()
+        new_instance.save()
         print(new_instance.id)
-        storage.save()
 
     def help_create(self):
         """ Help information for the create method """
