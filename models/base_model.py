@@ -8,7 +8,7 @@ from sqlalchemy import Column
 from sqlalchemy import String
 from sqlalchemy import DateTime
 
-Base = declarative_base();
+Base = declarative_base()
 
 class BaseModel:
     """Defines the BaseModel class.
