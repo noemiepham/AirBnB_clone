@@ -4,11 +4,14 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column
 from sqlalchemy import String
 from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
+
 
 class City(BaseModel, Base):
     """ The city class, contains state ID and name """
-    name = Column(String(128), nullable = True)
     __tablename__ = 'cities'
-    state_id = Column(String(60), ForeignKey('states.id'), nullable = True)
 
+    name = Column(String(128), nullable=True)
+    state_id = Column(String(60), ForeignKey('states.id'), nullable=True)
 
+    state = relationship("State", back_populates="cities")
