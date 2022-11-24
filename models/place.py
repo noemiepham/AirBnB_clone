@@ -2,7 +2,7 @@
 """ Place Module for HBNB project """
 from models.base_model import BaseModel
 from models.base_model import Base
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, Integer
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 from os import environ
@@ -18,9 +18,9 @@ class Place(BaseModel, Base):
     name = Column(String(128), nullable=False)
     description = Column(String(1024), nullable=False)
     number_rooms = Column(String(1024), nullable=False)
-    number_bathrooms = Column(int, nullable=False, defaut=0)
-    max_guest = Column(int, nullable=False, defaut=0)
-    price_by_night = Column(int, nullable=False, defaut=0)
+    number_bathrooms = Column(Integer, nullable=False, defaut=0)
+    max_guest = Column(Integer, nullable=False, defaut=0)
+    price_by_night = Column(Integer, nullable=False, defaut=0)
     latitude = Column(float, nullable=False)
     longitude = Column(float, nullable=False)
     amenity_ids = []
@@ -30,6 +30,12 @@ class Place(BaseModel, Base):
     if environ.get("HBNB_TYPE_STORAGE") == "db":
         reviews = relationship("Review", backref="place",
                                cascade="all,delete")
+        
+        #tast 10: 
+        # Add an instance of SQLAlchemy Table called place_amenity for 
+        # creating the relationship Many-To-Many between Place and Amenity:
+        amenities = relationship("Amenity", backref="place_amenity",
+                                secondary="place_amenity", viewonly=False)
     else:
         @ property
         def cities(self):
@@ -39,3 +45,8 @@ class Place(BaseModel, Base):
                 if self.id in storage.all(City)[key].state_id:
                     cities_dict.append(storage.all(City)[key])
                 return cities_dict
+    
+    #tast 10: 
+    # Add an instance of SQLAlchemy Table called place_amenity for 
+    # creating the relationship Many-To-Many between Place and Amenity:
+
