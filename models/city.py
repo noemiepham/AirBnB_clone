@@ -13,6 +13,11 @@ class City(BaseModel, Base):
     state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
 
     state = relationship("State", backref="cities")
+
+    #task 8: class attribute places must represent a relationship with the class Place.
+
     places = relationship("Place", backref="cities", cascade="all, delete")
-    #reviews = relationship("Review", backref="cities", cascade="all, delete")
+
+    #task 9:
+    reviews = relationship("Review", backref="cities", cascade="all, delete")
     
