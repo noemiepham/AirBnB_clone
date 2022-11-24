@@ -13,3 +13,6 @@ class City(BaseModel, Base):
     state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
 
     state = relationship("State", back_populates="cities")
+    places = relationship("Place", backref="cities", cascade="all, delete")
+    #reviews = relationship("Review", backref="cities", cascade="all, delete")
+    
