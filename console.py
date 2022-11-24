@@ -10,6 +10,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 from shlex import split
+from models.__init__ import storage
 
 
 class HBNBCommand(cmd.Cmd):
