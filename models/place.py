@@ -2,7 +2,7 @@
 """ Place Module for HBNB project """
 from models.base_model import BaseModel
 from models.base_model import Base
-from sqlalchemy import Column, String, Integer
+from sqlalchemy import Column, String, Integer, Float
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 from os import environ
@@ -21,8 +21,8 @@ class Place(BaseModel, Base):
     number_bathrooms = Column(Integer, nullable=False, default=0)
     max_guest = Column(Integer, nullable=False, default=0)
     price_by_night = Column(Integer, nullable=False, default=0)
-    latitude = Column(float, nullable=False)
-    longitude = Column(float, nullable=False)
+    latitude = Column(Float, nullable=False)
+    longitude = Column(Float, nullable=False)
     amenity_ids = []
 
     #task 9: class attribute reviews must represent a relationship with the class Review
