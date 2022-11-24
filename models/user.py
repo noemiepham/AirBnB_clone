@@ -12,6 +12,10 @@ class User(BaseModel, Base):
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=True)
     last_name = Column(String(128), nullable=True)
+
+    #Task8:places must represent a relationship with the class Place. If the User object is deleted,
     places = relationship("Place", backref="user", cascade="all, delete")
+
+    #Task 9: class attribute reviews must represent a relationship with the class Review
     reviews = relationship("Review", backref="user", cascade="all, delete")
     
