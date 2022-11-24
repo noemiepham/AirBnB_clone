@@ -3,7 +3,6 @@
 """
 import unittest
 import json
-import pep8
 import console
 from io import StringIO
 from unittest.mock import patch
