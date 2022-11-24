@@ -37,6 +37,7 @@ class HBNBCommand(cmd.Cmd):
 
     def precmd(self, line):
         """Reformat command line for advanced command syntax.
+
         Usage: <class name>.<command>([<id> [<*args> or <**kwargs>]])
         (Brackets denote optional fields in usage example.)
         """
@@ -222,7 +223,7 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage.all().items():
+            for k, v in storage.all(args).items():
                 if k.split('.')[0] == args:
                     print_list.append(str(v))
         else:
