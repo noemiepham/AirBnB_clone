@@ -100,12 +100,6 @@ class TestBasicCaseAndDoc(unittest.TestCase):
             result.total_errors, 0, "Found code style errors (pycodestyle)."
         )
 
-    def test_prompt(self):
-        """
-        Test the prompt
-        """
-        self.assertEqual("(hbnb) ", HBNBCommand.prompt)
-
     def test_emptyline(self):
         """
         Check the case of empty line
