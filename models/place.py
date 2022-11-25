@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
-from os import environ, getenv
+from os import getenv
 from models import storage
 from models.review import Review
 from models.amenity import Amenity

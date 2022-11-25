@@ -131,13 +131,12 @@ class HBNBCommand(cmd.Cmd):
                 if not attribute:
                     continue
                 setattr(new_instance, k, attribute)
-            new_instance.save()
-            print(new_instance.id)
         except SyntaxError:
             print("** class name missing **")
         except NameError as e:
             print("** class doesn't exist **")
-
+        new_instance.save()
+        print(new_instance.id)
 
     def help_create(self):
         """ Help information for the create method """
