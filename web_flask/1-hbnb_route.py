@@ -11,11 +11,6 @@ def hbnb():
     return "Hello HBNB!"
 
 @app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    """print HBNB"""
-    return "HBNB"
-
-@app.route('/c/hbnb', strict_slashes=False)
 def hbnb1():
     """print HBNB"""
     return "HBNB"
