@@ -36,7 +36,7 @@ def hbnb4(n):
     return "{} is a number".format(n)
 
 
-@app.route('/number_template/<n>', strict_slashes=False)
+@app.route('/number_template/<int:n>', strict_slashes=False)
 def hbnb5(n):
     """print n in h1"""
     return render_template('5-number.html', n=n)
