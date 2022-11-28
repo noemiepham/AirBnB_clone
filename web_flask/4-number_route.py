@@ -30,11 +30,10 @@ def hbnb3(text):
     return "Python {:s}".format(text.replace("_", " "))
 
 
-@app.route('/number/<n>', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def hbnb4(n):
     """print n is integer"""
-    if n is int:
-        return "{} is a number".format(n)
+    return "{} is a number".format(n)
 
 
 if __name__ == '__main__':
