@@ -2,7 +2,6 @@
 """Write a script that starts a Flask web application:"""
 from flask import Flask
 
-
 app = Flask(__name__)
 
 
@@ -13,12 +12,6 @@ def hbnb():
 
 
 @app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    """print HBNB"""
-    return "HBNB"
-
-
-@app.route('/c/hbnb', strict_slashes=False)
 def hbnb1():
     """print HBNB"""
     return "HBNB"
@@ -27,14 +20,14 @@ def hbnb1():
 @app.route('/c/<text>', strict_slashes=False)
 def hbnb2(text):
     """print c + text"""
-    return "C {:s}".format(text.replace("_", " "))
+    return "C {}".format(text.replace("_", " "))
 
 
 @app.route('/python/<text>', strict_slashes=False)
-def hbnb2(text):
+def hbnb3(text):
     """print text is cool + text"""
     text = "is cool"
-    return "C {:s}".format(text.replace("_", " "))
+    return "Python {:s}".format(text.replace("_", " "))
 
 
 if __name__ == '__main__':
