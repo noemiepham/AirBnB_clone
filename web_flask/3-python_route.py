@@ -22,11 +22,10 @@ def hbnb2(text):
     """print c + text"""
     return "C {}".format(text.replace("_", " "))
 
-
+@app.route('/python/<text>', defaults={'text': "is cool"})
 @app.route('/python/<text>', strict_slashes=False)
 def hbnb3(text):
     """print text is cool + text"""
-    text = "is cool"
     return "Python {:s}".format(text.replace("_", " "))
 
 
