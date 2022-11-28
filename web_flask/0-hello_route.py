@@ -1,4 +1,4 @@
-#!/usr/bin/pyhthon3
+#!/usr/bin/python3
 from flask import Flask
 from gevent.pywsgi import WSGIServer
 strict_slashes = False
@@ -14,4 +14,4 @@ def hello_world():
 if __name__ == '__main__':
     from waitress import serve
 
-    app.run(host="0.0.0.0", port=5000, debug = True) #host="0.0.0.0"
+    app.run(host="0.0.0.0", port=5000, debug=True)  # host="0.0.0.0"
