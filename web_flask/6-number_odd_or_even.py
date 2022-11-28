@@ -44,7 +44,7 @@ def hbnb5(n):
 
 
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
-def hbnb6(n):
+def number_odd_or_even(n):
     """print n in h1"""
     return render_template('6-number_odd_or_even.html', n=n)
 
