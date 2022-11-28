@@ -39,7 +39,7 @@ def hbnb4(n):
 @app.route('/number_template/<n>', strict_slashes=False)
 def hbnb5(n):
     """print n in h1"""
-    return render_template("5-number.html", n=n)
+    return render_template('5-number.html', n=n)
 
 
 if __name__ == '__main__':
