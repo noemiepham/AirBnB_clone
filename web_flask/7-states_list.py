@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Write a script that starts a Flask web application:"""
 from flask import Flask, render_template
-from waitress import serve
 from models import storage
 from models.state import State
 
@@ -14,7 +13,7 @@ def handle_teardown():
     storage.close()
 
 
-@app.route('/states_list', strict_slashes=False)
+@app.route('/states_list')
 def hbnb7():
     """return all database in the db"""
     state = storage.all(state)
@@ -22,4 +21,5 @@ def hbnb7():
 
 
 if __name__ == '__main__':
-    serve(app.run('0.0.0.0', 5000, debug=True))
+     app.url_map.strict_slashes = False
+     app.run('0.0.0.0', 5000)
