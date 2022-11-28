@@ -36,10 +36,6 @@ def hbnb4(n):
     return "{} is a number".format(n)
 
 
-if __name__ == '__main__':
-    app.run('0.0.0.0', 5000, debug=True)  # host="0.0.0.0"
-
-
 @app.route('/number_template/<n>', strict_slashes=False)
 def hbnb5(n):
     """print n in h1"""
