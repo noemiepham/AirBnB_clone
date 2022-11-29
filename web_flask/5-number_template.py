@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Write a script that starts a Flask web application:"""
 from flask import Flask, render_template
-from waitress import serve
 
 app = Flask(__name__)
 
@@ -44,4 +43,4 @@ def hbnb5(n):
 
 
 if __name__ == '__main__':
-    serve(app.run('0.0.0.0', 5000, debug=True)) 
+    app.run('0.0.0.0', 5000, debug=True)
