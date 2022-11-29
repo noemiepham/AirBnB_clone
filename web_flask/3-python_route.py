@@ -31,4 +31,4 @@ def hbnb3(text):
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 5000, debug=True)  # host="0.0.0.0"
+    app.run('0.0.0.0', 5000, debug=True) 

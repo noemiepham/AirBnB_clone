@@ -31,10 +31,10 @@ def hbnb3(text):
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def hbnb4(n):
+def number(n):
     """print n is integer"""
     return "{} is a number".format(n)
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 5000, debug=True)  # host="0.0.0.0"
+    app.run('0.0.0.0', 5000, debug=True)  
