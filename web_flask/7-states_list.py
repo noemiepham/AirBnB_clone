@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """Write a script that starts a Flask web application:"""
 from flask import Flask, render_template
+from models import storage
+from models.state import State
 
 app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def handle_teardown(self):
+def handle_teardown(exception):
     """handle teardown"""
     storage.close()
 
@@ -14,7 +16,7 @@ def handle_teardown(self):
 @app.route('/states_list')
 def states_list():
     """return all database in the db"""
-    state = storage.all("State")
+    state = storage.all(State).values()
     return render_template('7-states_list.html', state=state)
 
 
