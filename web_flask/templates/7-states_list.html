@@ -2,11 +2,11 @@
 <HTML lang="en">
 <HEAD>
     <TITLE>HBNB</TITLE>
-</HEAD>
+</HEAD> 
 <BODY>     
      <H1>States</H1>
-          <UL> {% for state in states.values()|sort(attribute="name"%}
-               <LI>{{state.id}}: <B>{{state.,name}}</B></LI>
+          <UL> {% for states in state |sort(attribute="name"%}
+               <LI>{{states.id}}: <B>{{states.name}}</B></LI>
                {% endfor %}
           </UL>
 </BODY>
