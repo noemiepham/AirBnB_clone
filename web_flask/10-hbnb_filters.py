@@ -2,8 +2,6 @@
 """Write a script that starts a Flask web application:"""
 from flask import Flask, render_template
 from models import storage
-from models.state import State
-from models.city import City
 
 app = Flask(__name__)
 
@@ -14,18 +12,12 @@ def handle_teardown():
     storage.close()
 
 
-@app.route('/states')
-def states():
-    """return all database"""
-    state = storage.all(State)
-    return render_template('9-states.py', state=state)
-
-
-@app.route('/states/<id>')
-def state_id():
-    """return all database in the db"""
-    cities = storage.all(City)
-    return render_template('8-cities_by_states.py', cities=cities)
+@app.route('/hbnb_filters')
+def hbnb_filters():
+    """Displays the main HBnB filters HTML page"""
+    states = storage.all("State")
+    amenities = storage.all("Amenity")
+    return render_template('10-hbnb_filters.html', states=states, amenities=amenities)
 
 
 if __name__ == '__main__':
