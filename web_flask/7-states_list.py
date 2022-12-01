@@ -2,8 +2,7 @@
 """Write a script that starts a Flask web application:"""
 
 from flask import Flask, render_template
-#from models import storage
-#from models.state import State
+import models
 
 app = Flask(__name__)
 
@@ -11,13 +10,13 @@ app = Flask(__name__)
 @app.teardown_appcontext
 def handle_teardown(exception):
     """handle teardown"""
-    storage.close()
+    models.storage.close()
 
 
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """return all database in the db"""
-    state = storage.all(State).values()
+    state = models.storage.all(models.State).values()
     return render_template('7-states_list.html', state=state)
 
 
