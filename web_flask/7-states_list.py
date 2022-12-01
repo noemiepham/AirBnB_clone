@@ -18,8 +18,8 @@ def handle_teardown(exception):
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """return all database in the db"""
-    state = storage.all(State).values()
-    return render_template('7-states_list.html', state=state)
+    statess = storage.all(State).values()
+    return render_template('7-states_list.html', states=statess)
 
 
 if __name__ == '__main__':
