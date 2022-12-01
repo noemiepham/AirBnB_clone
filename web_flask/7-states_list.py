@@ -13,7 +13,7 @@ def handle_teardown(exception):
     storage.close()
 
 
-@app.route('/states_list')
+@app.route('/states_list', strict_slashes=False)
 def states_list():
     """return all database in the db"""
     state = storage.all(State).values()
