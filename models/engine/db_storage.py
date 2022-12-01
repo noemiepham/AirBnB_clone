@@ -65,7 +65,7 @@ class DBStorage():
 
     def reload(self):
         """create all tables in the database and the current
-           database session"""
+           database   session"""
         from models.base_model import Base
         from models.amenity import Amenity
         from models.city import City
