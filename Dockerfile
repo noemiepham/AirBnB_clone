@@ -15,8 +15,5 @@ RUN apt-get install -y sqlite3 libsqlite3-dev
 RUN apt-get install -y python3-mysqldb
 RUN apt-get install -y python3-pip
 RUN pip3 install flask SQLAlchemy
-RUN apt-get update \
-    && apt-get install curl -y \
-    curl
-
+RUN pip3 install flask SQLAlchemy
 

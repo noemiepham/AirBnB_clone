@@ -1,46 +1,48 @@
 #!/usr/bin/python3
-"""Write a script that starts a Flask web application:"""
-from flask import Flask, render_template
+''' script that starts a Flask web application '''
+
+from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def hbnb():
-    """web application must be listening on 0.0.0.0, port 5000"""
-    return "Hello HBNB!"
+def index():
+    ''' Function that display Hello HBNB! '''
+    return 'Hello HBNB!'
 
 
 @app.route('/hbnb', strict_slashes=False)
-def hbnb1():
-    """print HBNB"""
-    return "HBNB"
+def hbnb():
+    ''' Function that display HBNB '''
+    return 'HBNB'
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def hbnb2(text):
-    """print c + text"""
-    return "C {}".format(text.replace("_", " "))
+def variable(text):
+    ''' Function that display C + <text> '''
+    return 'C ' + text.replace('_', ' ')
 
 
-@app.route('/python', defaults={"text": "is cool"}, strict_slashes=False)
+@app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def hbnb3(text):
-    """print text is cool + text"""
-    return "Python {:s}".format(text.replace("_", " "))
+def python(text='is cool'):
+    ''' Function that display Python + <text> '''
+    return 'Python ' + text.replace('_', ' ')
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def hbnb4(n):
-    """print n is integer"""
-    return "{} is a number".format(n)
+def number(n):
+    ''' Function that display <n> '''
+    return str(n) + ' is a number'
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
-def hbnb5(n):
-    """print n in h1"""
-    return render_template('5-number.html', n=n)
+def template(n):
+    ''' Function that display template '''
+    return render_template('5-number.html', num=n)
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 5000, debug=True)
+    app.run(host='0.0.0.0', port='5000')
